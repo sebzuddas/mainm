@@ -36,3 +36,18 @@ class CalculateGaussianDistribution:
             return 0
         else:
             return (1 / (math.sqrt(2 * math.pi) * self.std_dev)) * math.exp(-0.5 * ((x - self.mean) / self.std_dev) ** 2)
+        
+
+class CalculatePercentageChange:
+    def __init__(self) -> list:
+        self.percentage_change_list = []
+
+    def calculate(self, list_a, list_b):
+        self.percentage_change_list = []
+        for a, b in zip(list_a, list_b):
+            if a == 0:
+                change = float('inf') if b != 0 else 0
+            else:
+                change = ((b - a)/a)*100
+            self.percentage_change_list.append(change)
+        return self.percentage_change_list
